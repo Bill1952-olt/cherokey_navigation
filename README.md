@@ -1,1 +1,48 @@
-# cherokey_navigation
+# 🤖 Navigation Autonome - Robot Cherokey 4WD
+
+Ce dépôt rassemble les différents algorithmes de navigation et de traitement d'image développés pour le robot **Cherokey 4WD** (DFRobot) basé sur une architecture Arduino (ATmega328P / ATmega2560).
+
+L'objectif de ce projet est de doter le robot de capacités d'adaptation face à son environnement à travers trois modes de fonctionnement distincts.
+
+---
+
+## 🛠️ Matériel Utilisé
+* **Châssis :** Cherokey 4WD Mobile Platform (pont en H intégré)
+* **Microcontrôleur :** Arduino Uno / Mega
+* **Capteur de distance :** URM37 Ultrasons (Mode PWM)
+* **Caméra IA :** HuskyLens (DFRobot) connecté en I2C
+* **Actuateur :** Micro Servo-moteur 9g (pour le balayage du capteur)
+
+---
+
+## 🗂️ Architecture des Codes
+
+Le projet est divisé en 3 scripts indépendants, optimisés pour éviter le gel du processeur grâce à l'utilisation de tâches cadencées (`Metro.h`) plutôt que des fonctions bloquantes (`delay`).
+
+### 1. 🌀 Résolution de Labyrinthe (`/01-maze-solver`)
+* **Principe :** Navigation autonome par évitement d'obstacles.
+* **Logique :** * Un servo fait osciller le capteur ultrason entre 60° et 120° pour scanner l'horizon en continu.
+  * L'exécution utilise une **machine à états finis** stricte (`DRIVE_FORWARD` ➔ `EVADE_BACK` ➔ `EVADE_TURN`).
+  * En cas d'obstacle ($\le 30$ cm), le robot analyse la position du servo pour en déduire la direction du mur, s'arrête, effectue un recul franc, puis pivote du côté libre.
+  * **Sécurité informatique :** Un timeout de 20ms est configuré sur `pulseIn` pour empêcher les parasites électriques du servo de figer les mesures de distance.
+
+### 🎯 2. Suivi de Cible par Couleur (`/02-color-tracker`)
+* **Principe :** Suivi visuel en temps réel d'un objet ou d'une couleur spécifique.
+* **Logique :**
+  * Utilisation de l'algorithme de reconnaissance de couleur (`ALGORITHM_COLOR_RECOGNITION`) de la caméra HuskyLens.
+  * Récupération instantanée du centre X du bloc détecté. Si l'objet sort du champ de vision, le robot déclenche un frein électronique d'urgence (`LOST`).
+  * Si l'objet bouge, le robot ajuste sa trajectoire via une zone morte (`DEAD_ZONE`) centrale pour le suivre de manière fluide.
+
+### 🛣️ 3. Suivi de Ligne Automatique (`/03-line-follower`)
+* **Principe :** Suivi de trajectoire au sol (ruban noir sur fond blanc).
+* **Logique :**
+  * Utilisation des capteurs infrarouges / HuskyLens dédiés au suivi de ligne.
+  * Gestion fine de la vitesse différentielle des moteurs droit et gauche du Cherokey 4WD pour négocier les virages serrés sans déraper.
+
+---
+
+## 💻 Installation et Déploiement
+
+1. Clonez ce dépôt sur votre machine :
+   ```bash
+   git clone [https://github.com/VOTRE_PSEUDO/robot-cherokey-navigation.git](https://github.com/VOTRE_PSEUDO/robot-cherokey-navigation.git)
