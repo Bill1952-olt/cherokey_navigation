@@ -46,3 +46,6 @@ Le projet est divisé en 3 scripts indépendants, optimisés pour éviter le gel
 1. Clonez ce dépôt sur votre machine :
    ```bash
    git clone [https://github.com/VOTRE_PSEUDO/robot-cherokey-navigation.git](https://github.com/VOTRE_PSEUDO/robot-cherokey-navigation.git)
+
+
+>>>>>>> 90ee960 (ajout des bibliothèques nécéssaires)
