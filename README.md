@@ -20,26 +20,32 @@ L'objectif de ce projet est de doter le robot de capacités d'adaptation face à
 Le projet est divisé en 3 scripts indépendants, optimisés pour éviter le gel du processeur grâce à l'utilisation de tâches cadencées (`Metro.h`) plutôt que des fonctions bloquantes (`delay`).
 
 ### 1. 🌀 Résolution de Labyrinthe (`/01-labyrinthe`)
-* **Principe :** Navigation autonome par évitement d'obstacles.
+* **Principe :** Navigation autonome par évitement d'obstacles pour sortir d'un labyrinthe.
 * **Logique :** * Un servo fait osciller le capteur ultrason entre 60° et 120° pour scanner l'horizon en continu.
   * L'exécution utilise une **machine à états finis** stricte (`DRIVE_FORWARD` ➔ `EVADE_BACK` ➔ `EVADE_TURN`).
-  * En cas d'obstacle ($\le 30$ cm), le robot analyse la position du servo pour en déduire la direction du mur, s'arrête, effectue un recul franc, puis pivote du côté libre.
-  * **Sécurité informatique :** Un timeout de 20ms est configuré sur `pulseIn` pour empêcher les parasites électriques du servo de figer les mesures de distance.
+  * En cas d'obstacle ($\le 25$ cm), le robot analyse la position du servo pour en déduire la direction du mur, s'arrête, effectue un recul franc, puis pivote du côté libre.
+    
+## Pour en savoir plus sur le cablage du servo moteur et du capteur ultrason utilisé:https://wiki.dfrobot.com/rob0117/docs/21533 .
 
 
 
 ### 🎯 2. Suivi de Ligne Automatique (`/02-suivi_de_ligne`)
-* **Principe :** Suivi de trajectoire au sol (ruban noir sur fond blanc).
+* **Principe :** Suivi de trajectoire au sol (ruban noir sur fond blanc par exemple!).
 * **Logique :**
   * Utilisation des capteurs infrarouges / HuskyLens dédiés au suivi de ligne.
   * Gestion fine de la vitesse différentielle des moteurs droit et gauche du Cherokey 4WD pour négocier les virages serrés sans déraper.
+    
+ ## Pour bien configuré la fonction "line tracking " du Huskylens:https://wiki.dfrobot.com/sen0305/docs/22638
 
 ### 🛣️ 3. Suivi de Cible par Couleur (`/03-suivi_de_couleur`)
 * **Principe :** Suivi visuel en temps réel d'un objet ou d'une couleur spécifique.
 * **Logique :**
-  * Utilisation de l'algorithme de reconnaissance de couleur (`ALGORITHM_COLOR_RECOGNITION`) de la caméra HuskyLens.
+  * Utilisation de l'algorithme de reconnaissance de couleur (`COLOR_RECOGNITION`) de la caméra HuskyLens.
   * Récupération instantanée du centre X du bloc détecté. Si l'objet sort du champ de vision, le robot déclenche un frein électronique d'urgence (`LOST`).
   * Si l'objet bouge, le robot ajuste sa trajectoire via une zone morte (`DEAD_ZONE`) centrale pour le suivre de manière fluide.
+
+## Apprendre un peu plus sur la fonction "COLOR_RECOGNITION" :https://wiki.dfrobot.com/sen0305/docs/22646
+
 ---
 
 ## 💻 Installation et Déploiement
