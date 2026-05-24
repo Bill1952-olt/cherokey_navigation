@@ -96,10 +96,40 @@ Le projet est divisé en 3 scripts indépendants, optimisés pour éviter le gel
 
 1. Clonez ce dépôt sur votre machine :
    ```bash
-   git clone [https://github.com/VOTRE_PSEUDO/robot-cherokey-navigation.git](https://github.com/VOTRE_PSEUDO/robot-cherokey-navigation.git)
+   git clone [https://github.com/Bill1952-olt/cherokey_navigation.git)
+2. vous pouvez ensuite installer les bibliothèques manquant ,puis utiliser les liens plus haut pour assembler et configurer le cherokey .
 
+NB:
+## 🔌 Câblage et Paramétrage
 
+Voici la documentation technique pour la configuration matérielle et les constantes de pilotage.
 
+### 1. Configuration des Pins (Arduino)
+| Pin Arduino | Composant | Fonction |
+| :--- | :--- | :--- |
+| **3** | URM37 | Signal PWM |
+| **4** | Moteur M1 | Direction |
+| **5** | Moteur M1 | Vitesse (PWM) |
+| **6** | Moteur M2 | Vitesse (PWM) |
+| **7** | Moteur M2 | Direction |
+| **9** | Servo | Signal Servo |
+| **10** | URM37 | Trigger |
+| **A4 (SDA)** | HuskyLens | Données I2C |
+| **A5 (SCL)** | HuskyLens | Horloge I2C |
+
+### 2. Paramètres de Navigation (Labyrinthe)
+| Paramètre | Valeur | Rôle |
+| :--- | :--- | :--- |
+| `OBSTACLE_DIST` | 15-30 cm | Seuil de détection du mur |
+| `BACK_DURATION` | 150-400 ms | Temps de recul d'urgence |
+| `TURN_DURATION` | 300-550 ms | Temps de pivot pour virage |
+
+### 3. Paramètres de Vision (Suivi de ligne)
+| Paramètre | Valeur | Rôle |
+| :--- | :--- | :--- |
+| `DEAD_ZONE` | 60-95 px | Tolérance du centrage cible |
+| `SCAN_TURN_DURATION` | 350 ms | Durée du scan de recherche |
+| `LOST_CONFIRM` | 4 frames | Seuil de perte de cible |
 
 
 
