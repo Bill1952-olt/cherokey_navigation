@@ -96,10 +96,10 @@ Le projet est divisé en 3 scripts indépendants, optimisés pour éviter le gel
 
 1. Clonez ce dépôt sur votre machine :
    ```bash
-   git clone [https://github.com/Bill1952-olt/cherokey_navigation.git)
+   git clone https://github.com/Bill1952-olt/cherokey_navigation.git
 2. vous pouvez ensuite installer les bibliothèques manquant ,puis utiliser les liens plus haut pour assembler et configurer le cherokey .
 
-NB:
+
 ## 🔌 Câblage et Paramétrage
 
 Voici la documentation technique pour la configuration matérielle et les constantes de pilotage.
