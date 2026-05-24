@@ -31,7 +31,7 @@ Ce projet s'appuie sur le châssis **Cherokey 4WD** de DFRobot, enrichi d'une vi
 * **Détails techniques :**
     * Caméra capable de reconnaissance de formes, de visages et de couleurs en temps réel.
     * Communication I2C avec l'Arduino, ce qui permet une lecture rapide des coordonnées des objets (X, Y).
-    * Algorithmes embarqués : utilisations principales pour le suivi de ligne (`line-follower.ino`) et le pistage d'objets colorés (`color-tracker.ino`).
+    * Algorithmes embarqués : utilisations principales pour le suivi de ligne (`suivi_de_ligne.ino`) et le pistage d'objets colorés (`suivi_couleur.ino`).
 </details>
 
 <details>
