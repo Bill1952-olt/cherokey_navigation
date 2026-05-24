@@ -7,11 +7,31 @@ L'objectif de ce projet est de doter le robot de capacités d'adaptation face à
 ---
 
 ## 🛠️ Matériel Utilisé
-* **Châssis :** Cherokey 4WD Mobile Platform (pont en H intégré)
-* **Microcontrôleur :** Arduino Uno / Mega
-* **Capteur de distance :** URM37 Ultrasons (Mode PWM)
-* **Caméra IA :** HuskyLens (DFRobot) connecté en I2C
-* **Actuateur :** Micro Servo-moteur 9g (pour le balayage du capteur)
+
+Ce projet s'appuie sur le châssis Cherokey 4WD de DFRobot, agrémenté d'une caméra IA et d'un capteur de distance pour la navigation autonome.
+
+#### 1. Plateforme Mobile : Cherokey 4WD
+<img src="images/cherokey_robot.png" alt="Robot Cherokey 4WD" width="400">
+<img src="images/cherokey_.png" alt="Robot Cherokey 4WD" width="400">
+
+* **Description :** Le Cherokey 4WD est le cœur mobile du projet. Il s'agit d'un châssis robotique à quatre roues motrices robuste, fabriqué par DFRobot. Il intègre directement un pont en H L298N sur sa carte d'extension, ce qui simplifie grandement le contrôle de puissance des moteurs CC. Sa plateforme supérieure en acrylique offre suffisamment d'espace pour accueillir l'Arduino, la batterie et tous nos capteurs.
+
+#### 2. Cerveau IA : HuskyLens
+<img src="images/huskylens.png" alt="Caméra IA HuskyLens" width="300">
+<img src="images/camera.png" alt="Caméra IA HuskyLens" width="300">
+* **Description :** La HuskyLens est une caméra de vision par intelligence artificielle facile à utiliser. Dans notre projet, elle est connectée en I2C à l'Arduino. Elle est capable d'apprendre et de reconnaître des visages, des objets ou, dans notre cas précis, des couleurs pour le suivi (`color-tracker.ino`) ou des lignes au sol (`line-follower.ino`) grâce à ses algorithmes embarqués.
+
+#### 3. Capteur de Distance : URM37 Ultrasons
+<img src="images/urm37_sensor.png" alt="Capteur ultrason URM37" width="300">
+
+* **Description :** Ce capteur de distance est essentiel pour le mode labyrinthe (`maze_solver.ino`). Il fonctionne en mode PWM. Il émet des salves d'ultrasons et mesure le temps que met l'écho à revenir, permettant de calculer précisément la distance face à un obstacle.
+
+#### 4. Actuateur : Micro Servo 9g
+<img src="images/micro_servo.png" alt="Micro servo-moteur 9g" width="200">
+
+* **Description :** Ce petit moteur sert de mécanisme de balayage pour le capteur ultrason URM37. Il fait osciller le capteur de gauche à droite sur un arc de 60° (entre 60° et 120°) pour permettre au robot de "scanner" l'horizon et de détecter les murs sur ses flancs, plutôt que de regarder uniquement droit devant lui.
+
+---
 
 ---
 
