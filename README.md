@@ -13,7 +13,7 @@ Ce projet s'appuie sur le châssis **Cherokey 4WD** de DFRobot, enrichi d'une vi
 <summary><b>🔴 1. Plateforme Mobile : Cherokey 4WD</b></summary>
 <br>
 <img src="images/cherokey_robot.png" alt="Vue d'ensemble Cherokey" width="400">
-<img src="images/cherokey_.png" alt="Détail châssis" width="400">
+<img src="images/cherokey.png" alt="Détail châssis" width="400">
 
 * **Rôle :** Cœur de mobilité du robot, assurant le déplacement dans l'environnement.
 * **Détails techniques :** * Châssis à 4 roues motrices (4WD) permettant une excellente adhérence sur sol dur (parquet/carrelage).
