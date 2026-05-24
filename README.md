@@ -1,6 +1,6 @@
 # 🤖 Navigation Autonome - Robot Cherokey 4WD
 
-Ce dépôt rassemble les différents algorithmes de navigation et de traitement d'image développés pour le robot **Cherokey 4WD** (DFRobot) basé sur une architecture Arduino (ATmega328P / ATmega2560).
+Ce dépôt rassemble les différents algorithmes de navigation et de traitement d'image développés pour le robot **Cherokey 4WD** (DFRobot) basé sur une architecture Arduino (ATmega328P).
 
 L'objectif de ce projet est de doter le robot de capacités d'adaptation face à son environnement à travers trois modes de fonctionnement distincts.
 
@@ -13,7 +13,7 @@ Ce projet s'appuie sur le châssis **Cherokey 4WD** de DFRobot, enrichi d'une vi
 <summary><b>🔴 1. Plateforme Mobile : Cherokey 4WD</b></summary>
 <br>
 <img src="images/cherokey_robot.png" alt="Vue d'ensemble Cherokey" width="400">
-<img src="images/cherokey.png" alt="Détail châssis" width="400">
+<img src="images/cherokey.png" alt="image du robot" width="400">
 
 * **Rôle :** Cœur de mobilité du robot, assurant le déplacement dans l'environnement.
 * **Détails techniques :** * Châssis à 4 roues motrices (4WD) permettant une excellente adhérence sur sol dur (parquet/carrelage).
@@ -24,7 +24,7 @@ Ce projet s'appuie sur le châssis **Cherokey 4WD** de DFRobot, enrichi d'une vi
 <details>
 <summary><b>🔴 2. Cerveau IA : HuskyLens</b></summary>
 <br>
-<img src="images/huskylens.png" alt="Vue face HuskyLens" width="300">
+<img src="images/huskylens.png" alt="Vue du HuskyLens" width="300">
 <img src="images/camera.png" alt="Installation caméra" width="300">
 
 * **Rôle :** Système de traitement d'image et de perception intelligente par IA.
@@ -46,9 +46,9 @@ Ce projet s'appuie sur le châssis **Cherokey 4WD** de DFRobot, enrichi d'une vi
 </details>
 
 <details>
-<summary><b>🔴 4. Actuateur : Micro Servo 9g</b></summary>
+<summary><b>🔴 4. Actuateur : Servo moteur 9g</b></summary>
 <br>
-<img src="images/micro_servo.png" alt="Micro servo" width="200">
+
 
 * **Rôle :** Mécanisme de scan actif permettant d'élargir le champ de vision du capteur ultrason.
 * **Détails techniques :**
