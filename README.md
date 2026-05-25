@@ -98,7 +98,10 @@ Le projet est divisé en 3 scripts indépendants, optimisés pour éviter le gel
    ```bash
    git clone https://github.com/Bill1952-olt/cherokey_navigation.git
 2. vous pouvez ensuite installer les bibliothèques manquant ,puis utiliser les liens plus haut pour assembler et configurer le cherokey .
-
+3. lien vers le portfolio:
+   ```bash
+   https://manu-robot.carrd.co
+   
 
 ## 🔌 Câblage et Paramétrage
 
