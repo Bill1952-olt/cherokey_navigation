@@ -2,12 +2,12 @@
 #include <Metro.h>
 
 // ─── CONFIGURATION DES VITESSES ─────────────────────────────
-int speedForward = 150; // Légèrement baissé pour donner le temps de manoeuvrer
+int speedForward = 160; // Légèrement baissé pour donner le temps de manoeuvrer
 int speedTurn    = 160;
 int speedBack    = 120; // Augmenté pour un recul franc face au mur
 
 // Le temps entre deux mesures dépend de la vitesse d'avance
-int sensorDelay = 50; 
+int sensorDelay = 60; 
 
 // ─── TIMERS (METRO) ─────────────────────────────────────────
 Metro measureDistance = Metro(sensorDelay);
@@ -75,8 +75,8 @@ void loop() {
     case DRIVE_FORWARD:
       carAdvance(speedForward, speedForward);
       
-      // Si un mur du labyrinthe est détecté à 30 cm ou moins
-      if (actualDistance <= 30) {
+      // Si un mur du labyrinthe est détecté à 20 cm ou moins
+      if (actualDistance <= 20) {
         carStop(); // Arrêt immédiat pour couper l'inertie
         
         // Décision du sens de rotation selon la position du servo
@@ -106,14 +106,14 @@ void loop() {
           carTurnLeft(speedTurn, speedTurn);
         }
         
-        actionTimer.interval(550); // Pivote pendant 550 ms (Ajustable pour faire un angle droit)
+        actionTimer.interval(450); // Pivote pendant 450 ms (Ajustable pour faire un angle droit)
         actionTimer.reset();
         currentState = EVADE_TURN;
       }
       break;
 
     case EVADE_TURN:
-      // On attend la fin des 550 ms de rotation
+      // On attend la fin des 450 ms de rotation
       if (actionTimer.check()) {
         carStop();
         actualDistance = 100; // Reset virtuel pour effacer le mur de la mémoire
@@ -152,18 +152,18 @@ int MeasureDistance() { // a low pull on pin COMP/TRIG  triggering a sensor read
 // ════════════════════════════════════════════════════════════
 void servoSweep() {
   if (sweepFlag) {
-    pos += 6; // Incrément légèrement augmenté pour accélérer le balayage
-    if (pos >= 125) sweepFlag = 0;
+    pos += 8; // Incrément légèrement augmenté pour accélérer le balayage
+    if (pos >= 120) sweepFlag = 0;
   } 
   else {
-    pos -= 6;
-    if (pos <= 55) sweepFlag = 1;
+    pos -= 8;
+    if (pos <= 60) sweepFlag = 1;
   }
   myservo.write(pos);
 }
 
 // ════════════════════════════════════════════════════════════
-// FONCTIONS MOTEURS CHEROKEY 4WD (REPRISES DE TON CODE ORIGINAL)
+// FONCTIONS MOTEURS CHEROKEY 4WD 
 // ════════════════════════════════════════════════════════════
 void carStop(){                 
   digitalWrite(speedPin_M2, 0);
